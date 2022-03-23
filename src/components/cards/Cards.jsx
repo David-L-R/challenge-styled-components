@@ -1,4 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { Card } from "../";
+import { foods } from "../../data/foods";
 
 const CardsContainer = styled.div`
   width: 100%;
@@ -8,29 +11,39 @@ const CardsContainer = styled.div`
   flex-direction: flex-start;
 `;
 
-const Card = styled.div`
-  margin: 30px 30px;
-  width: 250px;
-  height: 300px;
-  border-radius: 40px;
-  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
-    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
-  cursor: pointer;
-  transition: 0.4s;
-
-  &:hover {
-    transform: scale(0.9, 0.9);
-    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
-      -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
-  }
-`;
-
 export const Cards = () => {
+  const [loading, setLoading] = useState(false);
+
+  const save = () => {
+    setLoading(true);
+
+    setTimeout(setLoading(false), 2000);
+  };
+
   return (
     <CardsContainer>
-      <Card>card1</Card>
-      <Card>card2</Card>
-      <Card>card3</Card>
+      {foods.map((food) => (
+        <Card>
+          <div className='img-container'>
+            <img src={food.img} alt={`recipe of ${food.title}`} />
+          </div>
+          <div className='text'>
+            <h2>{food.title}</h2>
+            <p>{food.description.slice(0, 200)}...</p>
+          </div>
+          <div className='tag-container'>
+            {food.tags.map((tag) => (
+              <div className='tag'>{tag}</div>
+            ))}
+          </div>
+          <div className='card-footer'>
+            <button className='secondary'>Recipe</button>
+            <button className='primary' onClick={save}>
+              {loading ? <Loader /> : "Save"}
+            </button>
+          </div>
+        </Card>
+      ))}
     </CardsContainer>
   );
 };

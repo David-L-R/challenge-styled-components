@@ -1,5 +1,4 @@
 import { Cards } from "./components";
-import "./App.css";
 
 function App() {
   return (
