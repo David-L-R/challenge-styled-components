@@ -1,0 +1,39 @@
+#root,
+html,
+body {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: #333; */
+}
+
+.background-color-dark {
+  background-color: #333;
+}
+
+.background-color-light {
+  background-color: #fff;
+}
+
+/* CARD!!!!! */
+
+.card {
+  width: 200px;
+  border: 1px solid #333;
+}
+
+.card img {
+  width: 100%;
+}
+
+.text {
+  padding: 20px;
+}
+
+/* CARD ENDS!!!! */
