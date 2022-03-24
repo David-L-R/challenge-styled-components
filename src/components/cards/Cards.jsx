@@ -53,19 +53,21 @@ export const Cards = () => {
     <CardsContainer>
       {foods.map((food) => (
         <Card key={food.id}>
-          <div className='img-container'>
-            <img src={food.img} alt={`recipe of ${food.title}`} />
-          </div>
-          <div className='text'>
-            <h2>{food.title}</h2>
-            <p>{food.description.slice(0, 200)}...</p>
-          </div>
-          <div className='tag-container'>
-            {food.tags.map((tag) => (
-              <div className='tag' key={tag}>
-                {tag}
-              </div>
-            ))}
+          <div className='card-header'>
+            <div className='img-container'>
+              <img src={food.img} alt={`recipe of ${food.title}`} />
+            </div>
+            <div className='text'>
+              <h2>{food.title}</h2>
+              <p>{food.description.slice(0, 200)}...</p>
+            </div>
+            <div className='tag-container'>
+              {food.tags.map((tag) => (
+                <div className='tag' key={tag}>
+                  {tag}
+                </div>
+              ))}
+            </div>
           </div>
           <div className='card-footer'>
             <button className='secondary'>Recipe</button>
