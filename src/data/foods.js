@@ -1,5 +1,6 @@
 export const foods = [
   {
+    id: 1,
     img: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg",
     title: "Card 1",
     description:
@@ -7,6 +8,7 @@ export const foods = [
     tags: ["tag 1", "tag 2", "tag 3"],
   },
   {
+    id: 2,
     img: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/processed-food700-350-e6d0f0f.jpg?quality=90&resize=556,505",
     title: "Card 2",
     description:
@@ -14,6 +16,7 @@ export const foods = [
     tags: ["tag 1", "tag 4", "tag 5"],
   },
   {
+    id: 3,
     img: "https://images.everydayhealth.com/images/diet-nutrition/34da4c4e-82c3-47d7-953d-121945eada1e00-giveitup-unhealthyfood.jpg?sfvrsn=a31d8d32_0",
     title: "Card 3",
     description:

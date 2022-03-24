@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Card } from "../";
+import { Card, Loader } from "../";
 import { foods } from "../../data/foods";
 
 const CardsContainer = styled.div`
@@ -12,18 +12,47 @@ const CardsContainer = styled.div`
 `;
 
 export const Cards = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState({});
+  const [saved, setSaved] = useState({});
 
-  const save = () => {
-    setLoading(true);
-
-    setTimeout(setLoading(false), 2000);
+  const save = (id) => {
+    setLoading({
+      ...loading,
+      [id]: false,
+    });
+    setSaved({
+      ...saved,
+      [id]: true,
+    });
   };
+
+  const handleSave = (id) => {
+    setLoading({
+      ...loading,
+      [id]: true,
+    });
+
+    const passId = () => {
+      save(id);
+    };
+
+    setTimeout(passId, 5000);
+  };
+
+  useEffect(() => {
+    const foodState = {};
+    foods.forEach((food) => {
+      foodState[food.id] = false;
+    });
+
+    setSaved({ ...foodState });
+    setLoading({ ...foodState });
+  }, []);
 
   return (
     <CardsContainer>
       {foods.map((food) => (
-        <Card>
+        <Card key={food.id}>
           <div className='img-container'>
             <img src={food.img} alt={`recipe of ${food.title}`} />
           </div>
@@ -33,14 +62,20 @@ export const Cards = () => {
           </div>
           <div className='tag-container'>
             {food.tags.map((tag) => (
-              <div className='tag'>{tag}</div>
+              <div className='tag' key={tag}>
+                {tag}
+              </div>
             ))}
           </div>
           <div className='card-footer'>
             <button className='secondary'>Recipe</button>
-            <button className='primary' onClick={save}>
-              {loading ? <Loader /> : "Save"}
-            </button>
+            {!saved[food.id] ? (
+              <button className='primary' onClick={() => handleSave(food.id)}>
+                {loading[food.id] ? <Loader /> : "Save"}
+              </button>
+            ) : (
+              <div className='alert-success'>SAVED ✓</div>
+            )}
           </div>
         </Card>
       ))}
