@@ -1,4 +1,4 @@
-# STYLED COMPONENTS (aka CSS-IN-JS)
+CSS-IN-JS
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/31222514/149813532-e214a55c-9b91-4b71-bb17-0dcf18903f7a.png" width="8%" alt="CSS logo">
